@@ -1,8 +1,13 @@
 package edu.lenoncristhians.terceiro.servlet;
 
- 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +21,27 @@ public class INSSServlet extends HttpServlet {
 
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        super.doGet(req, resp);
+        
+        String jspDestination = "calculo.jsp";
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(jspDestination);
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        try {
+            BigDecimal convertedSalary = moneyParse(req.getParameter("salary"), Locale.FRANCE);
+            req.setAttribute("convertedSalary", convertedSalary.toString());
+            requestDispatcher.forward(req, resp);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    }
+
+    public static BigDecimal moneyParse(final String amount, final Locale locale) throws ParseException {
+        final NumberFormat format = NumberFormat.getNumberInstance(locale);
+        if (format instanceof DecimalFormat) {
+            ((DecimalFormat) format).setParseBigDecimal(true);
+        }
+        return (BigDecimal) format.parse(amount.replaceAll("[^\\d.,]",""));
     }
     
 }

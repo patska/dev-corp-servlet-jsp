@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +12,9 @@
 
 <body>
     <div class="DevCorp-container">
-        <form action="INSSServlet" id="form" method="get">
-            <label for="salary">Digite o seu <strong>salário bruto</strong> <i>(campo obrigatório)</i></label>
-            <input type="text" id="salary" name="salary" data-thousands="." data-decimal="," data-prefix="R$ " placeholder="Salário bruto">
-            <input type="submit" value="Enviar">
-        </form>
+        Sal�rio enviado: <%= request.getAttribute("convertedSalary") %>
     </div>
 </body>
 
+</html>
 </html>
