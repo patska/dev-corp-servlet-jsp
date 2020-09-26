@@ -12,7 +12,7 @@
 
 <body>
     <div class="DevCorp-container">
-        Salário enviado: <%= request.getAttribute("convertedSalary") %>
+        Salário enviado: <%= request.getAttribute("salary") %>
     </div>
 </body>
 
