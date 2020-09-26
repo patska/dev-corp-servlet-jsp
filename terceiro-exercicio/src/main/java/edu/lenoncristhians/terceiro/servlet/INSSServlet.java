@@ -1,8 +1,6 @@
 package edu.lenoncristhians.terceiro.servlet;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.math3.util.Decimal64;
 import org.apache.commons.math3.util.Precision;
 
 @WebServlet("INSSServlet")
@@ -37,14 +34,10 @@ public class INSSServlet extends HttpServlet {
             if (salary > arrayList.get(1)){
                 temp = Precision.round((arrayList.get(1) - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp;
-                System.out.println("Primeira condição: " + (arrayList.get(1) - arrayList.get(0)) * arrayList.get(2));
-                System.out.println("[Rounded] Primeira Condição. TaxDiscount: " + temp);
             }
             if (salary > arrayList.get(0) && salary <=arrayList.get(1)){
                 temp = Precision.round((salary - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp; 
-                System.out.println("Segunda Condição. TaxDiscount: " + (salary - arrayList.get(0)) * arrayList.get(2));
-                System.out.println("[Rounded] Segunda Condição. TaxDiscount: " + temp);
             }
         }
 
