@@ -21,38 +21,38 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("INSSServlet")
 public class INSSServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 6921737022127476731L;
+    private static final long serialVersionUID = 6921737022127476731L;
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         String jspDestination = "calculo.jsp";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(jspDestination);
-        Map <Integer, ArrayList<Double>> aliquot = brazilianINSSAliquotMap();
+        ArrayList<ArrayList<Double>> aliquot = brazilianINSSAliquotMap();
         Double salary = stringToBRLConverter(req.getParameter("salary"));
+
+        for (Integer lista : aliquot.keySet()){
+
+        }
 
         req.setAttribute("salary", salary);
         requestDispatcher.forward(req, resp);
     }
 
-    public Map<Integer, ArrayList<Double>> brazilianINSSAliquotMap(){
-        
-        Map <Integer, ArrayList<Double>> aliquot = new HashMap<>();
-        aliquot.put(0, new ArrayList<>(Arrays.asList(0.01, 1045.00, 7.5)));
-        aliquot.put(1, new ArrayList<>(Arrays.asList(1045.01, 2089.60, 9.0)));
-        aliquot.put(2, new ArrayList<>(Arrays.asList(2089.61, 3134.40, 12.0)));
-        aliquot.put(3, new ArrayList<>(Arrays.asList(3134.41, 6101.06, 14.0)));
-
+    public ArrayList<ArrayList<Double>> brazilianINSSAliquotMap() {
+        ArrayList<ArrayList<Double>> aliquot = new ArrayList<>();
+        aliquot.add(new ArrayList<>(Arrays.asList(0.01, 1045.00, 7.5)));
+        aliquot.add(new ArrayList<>(Arrays.asList(1045.01, 2089.60, 9.0)));
+        aliquot.add(new ArrayList<>(Arrays.asList(2089.61, 3134.40, 12.0)));
+        aliquot.add(new ArrayList<>(Arrays.asList(3134.41, 6101.06, 14.0)));
         return aliquot;
     }
 
-    public Double stringToBRLConverter(String st){
+    public Double stringToBRLConverter(String st) {
         st = st.substring(3);
         st = st.replace(".", "");
         st = st.replace(",", ".");
         return Double.parseDouble(st);
     }
 
-    
-    
 }
