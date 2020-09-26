@@ -13,6 +13,9 @@
 <body>
     <div class="DevCorp-container">
         Salário enviado: <%= request.getAttribute("salary") %>
+        Salário Liquido: <%= request.getAttribute("netSalary") %>
+        Desconto aplicado (TOTAL): <%= request.getAttribute("taxDiscount") %>
+
     </div>
 </body>
 
