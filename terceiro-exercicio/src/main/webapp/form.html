@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resource/css/styles.css">
+    <title>Formulário INSS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="resource/js/jquery.maskMoney.js"></script>
+    <script src="resource/js/scripts.js"></script>
+</head>
+
+<body>
+    <div class="DevCorp-container">
+        <form action="INSSServlet" id="form" method="get">
+            <label for="salary">Digite o seu <strong>salário bruto</strong> <i>(campo obrigatório)</i></label>
+            <input type="text" id="salary" name="salary" data-thousands="." data-decimal="," data-prefix="R$ " placeholder="Salário bruto">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>
