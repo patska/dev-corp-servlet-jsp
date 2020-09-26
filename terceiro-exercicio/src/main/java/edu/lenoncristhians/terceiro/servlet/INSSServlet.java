@@ -25,7 +25,6 @@ public class INSSServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(jspDestination);
         ArrayList<ArrayList<Double>> aliquot = brazilianINSSAliquotMap();
         Double salary = stringToBRLConverter(req.getParameter("salary"));
-        System.out.println("Salário bruto: " + salary);
         Double netSalary = 0.0;
         Double taxDiscount = 0.0;
 
@@ -43,7 +42,7 @@ public class INSSServlet extends HttpServlet {
 
         
         netSalary = salary - taxDiscount;
-        req.setAttribute("salary", Precision.round(salary, 2));
+        req.setAttribute("salary", brlToStringConverter(Precision.round(salary, 2)));
         req.setAttribute("netSalary", Precision.round(netSalary, 2));
         req.setAttribute("taxDiscount", Precision.round(taxDiscount, 2));
 
@@ -64,6 +63,13 @@ public class INSSServlet extends HttpServlet {
         st = st.replace(".", "");
         st = st.replace(",", ".");
         return Double.parseDouble(st);
+    }
+
+    public String brlToStringConverter(Double value){
+        String st = "R$ " + Precision.round(value, 2);
+        st = st.replace(".", ",");
+    
+        return st;
     }
 
 }
