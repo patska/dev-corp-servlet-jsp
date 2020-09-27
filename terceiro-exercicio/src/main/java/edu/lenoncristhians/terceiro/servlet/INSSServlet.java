@@ -33,7 +33,7 @@ public class INSSServlet extends HttpServlet {
         try{
             salary = stringToBRLConverter(req.getParameter("salary"));
         } catch(NumberFormatException numberFormatException){
-            logger.error("[NumberFormatException] Error when converting input to double. Redirecting to homepage...");
+            logger.error("[INSSServlet - NumberFormatException] Error when converting input to double. Redirecting to homepage...");
             resp.sendRedirect("/terceiro-exercicio");
         }
         Double netSalary = 0.00;
