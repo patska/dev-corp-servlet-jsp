@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,25 @@
 
 <body>
     <div class="DevCorp-container">
-        Salário enviado: <%= request.getAttribute("salary") %>
-        Salário Liquido: <%= request.getAttribute("netSalary") %>
-        Desconto aplicado (TOTAL): <%= request.getAttribute("taxDiscount") %>
-
+        <br/>
+        <h2>Cálculo de INSS</h2>
+        <br/>
+        <strong>Salário bruto: <%= request.getAttribute("salary") %></strong>
+        <br/>
+        <strong>Valor de INSS a descontar: <%= request.getAttribute("taxDiscount") %></strong>
+        <br/>
+        <strong>Salário líquido: <%= request.getAttribute("netSalary") %></strong>
+        <br/>
+        <br/>
+        <%@ page import = "java.util.ArrayList" %>
+        <%
+            ArrayList<String> messages = (ArrayList<String>) request.getAttribute("messages");
+            for(int i = 0; i < messages.size() ; i++){
+                out.println(messages.get(i));
+                out.println("<br/>");
+            }
+        %>
+        <br/>
     </div>
 </body>
 
