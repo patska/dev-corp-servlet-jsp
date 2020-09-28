@@ -15,6 +15,13 @@ import org.apache.commons.math3.util.Precision;
 import org.apache.log4j.Logger;
 
 
+/**
+ * Main servlet that contains the logic for calculating the INSS tax discount.
+ * 
+ * @author Lenon Cristhians
+ * @version 1.0
+ * 
+ */
 @WebServlet("INSSServlet")
 public class INSSServlet extends HttpServlet {
 
@@ -72,6 +79,12 @@ public class INSSServlet extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
+    /**
+     * Method that generates the INSS rates.
+     * 
+     * @return ArrayList with the INSS rates.
+     */
+
     public ArrayList<ArrayList<Double>> brazilianINSSRateMap() {
         ArrayList<ArrayList<Double>> rate = new ArrayList<>();
         rate.add(new ArrayList<>(Arrays.asList(0.00, 1045.00, 0.075)));
@@ -81,6 +94,13 @@ public class INSSServlet extends HttpServlet {
         return rate;
     }
 
+    /**
+     * Method that converts text to decimal numbers in Brazilian format.
+     * 
+     * @param st - Text that contains decimals in String format.
+     * @return ArrayList with the INSS rates.
+     */
+    
     public Double stringToBRLConverter(String st) {
         st = st.substring(3);
         st = st.replace(".", "");
@@ -88,6 +108,12 @@ public class INSSServlet extends HttpServlet {
         return Double.parseDouble(st);
     }
 
+    /**
+     * Method that converts decimals to a String with BRL format.
+     * 
+     * @param value - Double decimal.
+     * @return String with BRL format.
+     */
     public String brlToStringConverter(Double value) {
         String st = "R$ " + Precision.round(value, 2);
         st = st.replace(".", ",");
