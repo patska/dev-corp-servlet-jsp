@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.math3.util.Precision;
 import org.apache.log4j.Logger;
 
+
 @WebServlet("INSSServlet")
 public class INSSServlet extends HttpServlet {
 
@@ -25,7 +26,7 @@ public class INSSServlet extends HttpServlet {
         
         String jspDestination = "calculo.jsp";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(jspDestination);
-        ArrayList<ArrayList<Double>> aliquot = brazilianINSSAliquotMap();
+        ArrayList<ArrayList<Double>> rate = brazilianINSSRateMap();
         Double salary = 0.00;
         try{
             salary = stringToBRLConverter(req.getParameter("salary"));
@@ -36,29 +37,29 @@ public class INSSServlet extends HttpServlet {
         Double netSalary = 0.00;
         Double taxDiscount = 0.00;
         ArrayList<String> messages = new ArrayList<>();
-        int aliquotCurrentIndex = 1;
+        int rateCurrentIndex = 1;
 
         logger.info("[INSSServlet] INSSServlet Init.");
         logger.info("[INSSServlet] Input value: " + salary);
 
-        for (ArrayList<Double> arrayList : aliquot) {
-            logger.info("[INSSServlet] aliquot current index: " + Precision.round(netSalary, 2));
+        for (ArrayList<Double> arrayList : rate) {
+            logger.info("[INSSServlet] rate current index: " + Precision.round(netSalary, 2));
             Double temp = 0.00;
             if (salary > arrayList.get(1)) {
                 temp = Precision.round((arrayList.get(1) - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp;
                 logger.info("[INSSServlet] First condition for temporary tax discount value: " + temp);
                 String percentageWithComma = String.valueOf(Precision.round(arrayList.get(2) * 100, 2)).replace(".", ",");
-                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
+                messages.add("- " + rateCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
             }
             if (salary > arrayList.get(0) && salary <= arrayList.get(1)) {
                 temp = Precision.round((salary - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp;
                 logger.info("[INSSServlet] Second condition for temporary tax discount value: " + temp);
                 String percentageWithComma = String.valueOf(Precision.round(arrayList.get(2) * 100, 2)).replace(".", ",");
-                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
+                messages.add("- " + rateCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
             }
-            aliquotCurrentIndex++;
+            rateCurrentIndex++;
         }
         
         netSalary = salary - taxDiscount;
@@ -71,13 +72,13 @@ public class INSSServlet extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
-    public ArrayList<ArrayList<Double>> brazilianINSSAliquotMap() {
-        ArrayList<ArrayList<Double>> aliquot = new ArrayList<>();
-        aliquot.add(new ArrayList<>(Arrays.asList(0.00, 1045.00, 0.075)));
-        aliquot.add(new ArrayList<>(Arrays.asList(1045.00, 2089.60, 0.09)));
-        aliquot.add(new ArrayList<>(Arrays.asList(2089.60, 3134.40, 0.12)));
-        aliquot.add(new ArrayList<>(Arrays.asList(3134.40, 6101.06, 0.14)));
-        return aliquot;
+    public ArrayList<ArrayList<Double>> brazilianINSSRateMap() {
+        ArrayList<ArrayList<Double>> rate = new ArrayList<>();
+        rate.add(new ArrayList<>(Arrays.asList(0.00, 1045.00, 0.075)));
+        rate.add(new ArrayList<>(Arrays.asList(1045.00, 2089.60, 0.09)));
+        rate.add(new ArrayList<>(Arrays.asList(2089.60, 3134.40, 0.12)));
+        rate.add(new ArrayList<>(Arrays.asList(3134.40, 6101.06, 0.14)));
+        return rate;
     }
 
     public Double stringToBRLConverter(String st) {
