@@ -1,9 +1,13 @@
 # dev-corp-1bim-lista
 ## Checklist
 :white_check_mark: - Primeiro Exercicio
+<br/>
 :white_check_mark: - Segundo Exercicio
+<br/>
 :white_check_mark: - Terceiro Exercicio
+<br/>
 :white_check_mark: - Logs
+<br/>
 :white_check_mark: - JavaDoc para Terceiro Exercicio
 
 <br/>
