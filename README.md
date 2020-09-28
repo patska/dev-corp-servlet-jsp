@@ -1,6 +1,9 @@
 # dev-corp-1bim-lista
 ## Checklist
 :white_check_mark: - Primeiro Exercicio
+:white_check_mark: - Segundo Exercicio
+:white_check_mark: - Terceiro Exercicio
+:white_check_mark: - Logs
 
 
 Lista de exercícios para entrega referentes ao primeiro bimestre da matéria de Desenvolvimento Corporativo.
