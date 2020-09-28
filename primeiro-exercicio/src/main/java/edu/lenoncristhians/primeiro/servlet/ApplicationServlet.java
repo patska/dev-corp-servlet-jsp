@@ -9,6 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Main servlet that contains the logic to convert miles per hour to kilometers per hour.
+ * 
+ * @author Lenon Cristhians
+ * @version 1.0
+ * 
+ */
+
 @WebServlet(name="ApplicationController", urlPatterns={"/index.html"})
 public class ApplicationServlet extends HttpServlet {
 
