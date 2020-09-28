@@ -1,6 +1,9 @@
 # dev-corp-1bim-lista
 ## Checklist
 :white_check_mark: - Primeiro Exercicio
+:white_check_mark: - Segundo Exercicio
+:white_check_mark: - Terceiro Exercicio
+:white_check_mark: - Logs
 
 :white_check_mark: - Segundo Exercicio
 
