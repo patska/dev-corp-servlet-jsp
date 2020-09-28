@@ -2,7 +2,13 @@
 ## Checklist
 :white_check_mark: - Primeiro Exercicio
 
+:white_check_mark: - Segundo Exercicio
 
+:white_check_mark: - Terceiro Exercicio
+
+:white_check_mark: - Logs para o terceiro exercício
+<br/>
+<br/>
 Lista de exercícios para entrega referentes ao primeiro bimestre da matéria de Desenvolvimento Corporativo.
 
 **Primeiro exercício**. (Valor 1,0 ponto) Crie uma servlet para gerar uma tabela HTML de conversão Milhas por hora (mph) para Km por hora (km/h) entre 10 e 200 Milhas por hora com incrementos de 10 em 10. 

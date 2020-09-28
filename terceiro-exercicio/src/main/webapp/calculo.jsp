@@ -3,11 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resource/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Formulário INSS</title>
 </head>
-
 <body>
-    <div class="DevCorp-container">
+
+    <div class="DevCorp-container" style="font-family: 'Roboto', sans-serif;">
         <br/>
         <h2>Cálculo de INSS</h2>
         <br/>
