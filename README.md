@@ -4,12 +4,8 @@
 :white_check_mark: - Segundo Exercicio
 :white_check_mark: - Terceiro Exercicio
 :white_check_mark: - Logs
+:white_check_mark: - JavaDoc para Terceiro Exercicio
 
-:white_check_mark: - Segundo Exercicio
-
-:white_check_mark: - Terceiro Exercicio
-
-:white_check_mark: - Logs para o terceiro exercício
 <br/>
 <br/>
 Lista de exercícios para entrega referentes ao primeiro bimestre da matéria de Desenvolvimento Corporativo.
