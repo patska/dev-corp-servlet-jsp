@@ -48,13 +48,15 @@ public class INSSServlet extends HttpServlet {
                 temp = Precision.round((arrayList.get(1) - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp;
                 logger.info("[INSSServlet] First condition for temporary tax discount value: " + temp);
-                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + arrayList.get(2) * 100 + "% = " + temp);
+                String percentageWithComma = String.valueOf(Precision.round(arrayList.get(2) * 100, 2)).replace(".", ",");
+                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
             }
             if (salary > arrayList.get(0) && salary <= arrayList.get(1)) {
                 temp = Precision.round((salary - arrayList.get(0)) * arrayList.get(2), 2);
                 taxDiscount += temp;
                 logger.info("[INSSServlet] Second condition for temporary tax discount value: " + temp);
-                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + arrayList.get(2) * 100 + "% = " + temp);
+                String percentageWithComma = String.valueOf(Precision.round(arrayList.get(2) * 100, 2)).replace(".", ",");
+                messages.add("- " + aliquotCurrentIndex + "ª Faixa Salarial: " +  brlToStringConverter(arrayList.get(1)) + " x " + percentageWithComma + "% = " + brlToStringConverter(temp));
             }
             aliquotCurrentIndex++;
         }
