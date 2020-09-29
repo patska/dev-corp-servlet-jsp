@@ -9,6 +9,8 @@
 :white_check_mark: - Logs
 <br/>
 :white_check_mark: - JavaDoc para Terceiro Exercicio
+<br/>
+:white_check_mark: - Trabalho entregue 
 
 <br/>
 <br/>
